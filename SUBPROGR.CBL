@@ -1,6 +1,6 @@
         IDENTIFICATION DIVISION.
-        PROGRAM-ID. SUBPROGR.
-        AUTHOR.     BURAK OZDEMIR.
+        PROGRAM-ID.    SUBPROGR.
+        AUTHOR.        BURAK OZDEMIR.
         ENVIRONMENT DIVISION.
         INPUT-OUTPUT SECTION.
         FILE-CONTROL.
@@ -62,14 +62,12 @@
              WHEN WS-FUNC-DELETE
                 PERFORM DEL-PROCESS
              WHEN OTHER
+               MOVE 91 TO WS-SUB-RC 
                STRING 'ERROR: FROM INPUT, UNDEFINED LETTER: '
                WS-SUB-FUNC
                DELIMITED BY SIZE INTO WS-ERROR-EXPLAIN
                PERFORM H999-PROGRAM-EXIT
-           END-EVALUATE
-      * Bu satira gelmesi mumkun degil fakat yine de EXIT satiri
-      * ekledim.
-           PERFORM H999-PROGRAM-EXIT.
+           END-EVALUATE.
        0000-END. EXIT.
       *
        H100-OPEN-FILES.
@@ -101,12 +99,12 @@
            WRITE IDX-RECORD
            PERFORM STATUS-CONTROL
            MOVE IDX-ALLNAME                      TO WS-SUB-DATA
-      *    Buradan goback yaptigimizda ana programda sadece 
-      *    WS-SUB-DATA'yi kullaniyorum. Fakat BUDGET VE DATE'i 
-      *    kullanmamiz durumunda bir hata olusmasin diye burada 
+      *    Buradan goback yaptigimizda ana programda sadece
+      *    WS-SUB-DATA'yi kullaniyorum. Fakat BUDGET VE DATE'i
+      *    kullanmamiz durumunda bir hata olusmasin diye burada
       *    onlari da doldurduk.
-           MOVE IDX-DATE                         TO WS-DATE 
-           MOVE IDX-BUDGET                       TO WS-BUDGET 
+           MOVE IDX-DATE                         TO WS-DATE
+           MOVE IDX-BUDGET                       TO WS-BUDGET
            PERFORM H999-PROGRAM-EXIT.
        WRT-PROCESS-END. EXIT.
       *
@@ -123,12 +121,11 @@
        UPT-PROCESS.
            PERFORM IS-ID-EXIST
            PERFORM IS-UPDATED
-      *    TEMP-NAME'i boslukla dolduruyoruz, cunku isim 'CEM' gibi 
-      *    kisa bir isim olabilir. Ve TEMP-NAME'i yukarida kullandim
-      *    diye.
-           MOVE SPACES TO TEMP-NAME 
-           MOVE 1 TO I 
-           MOVE 1 TO J
+      *    TEMP-NAME'i boslukla dolduruyoruz, cunku isim 'CEM' gibi
+      *    kisa bir isim olabilir. Veya TEMP-NAME'i IS-UPDATED'da
+      *    kullandigimizdan dolayi burada tekrar SPACE atamaliyiz.
+           MOVE SPACES TO TEMP-NAME
+           MOVE 1 TO I J
            MOVE IDX-ALLNAME  TO WS-ALLNAME-BEFORE
            PERFORM VARYING I FROM 1 BY 1 UNTIL I > 15
              IF NOT IDX-ALLNAME(I:1) = SPACE
@@ -137,13 +134,10 @@
              END-IF
            END-PERFORM
            MOVE TEMP-NAME TO IDX-ALLNAME(1:15).
-           MOVE IDX-ALLNAME(15:15) TO TEMP-LASTNAME 
-           INSPECT TEMP-LASTNAME REPLACING ALL 'E' BY 'I'
-           INSPECT TEMP-LASTNAME REPLACING ALL 'e' BY 'i'
-           INSPECT TEMP-LASTNAME REPLACING ALL 'A' BY 'E'
-           INSPECT TEMP-LASTNAME REPLACING ALL 'a' BY 'e'
+           MOVE IDX-ALLNAME(15:15) TO TEMP-LASTNAME
+           INSPECT TEMP-LASTNAME REPLACING ALL 'E' BY 'I', 'e' BY 'i'
+           INSPECT TEMP-LASTNAME REPLACING ALL 'A' BY 'E', 'a' BY 'e'
            MOVE TEMP-LASTNAME TO IDX-ALLNAME(15:15)
-           REWRITE IDX-RECORD
            REWRITE IDX-RECORD
            PERFORM STATUS-CONTROL.
            MOVE IDX-ALLNAME TO WS-SUB-DATA
@@ -151,53 +145,40 @@
        UPT-PROCESS-END. EXIT.
       *
        IS-UPDATED.
-            MOVE 0 TO I.
-            MOVE 0 TO J.
+            MOVE 0 TO I J.
       *     Record daha once UPDATE edildi mi diye bu kisimda bakiyorum.
-      *     Ismimizin sonundaki bosluklari saydigimizda sondaki 
+      *     Ismimizin sonundaki bosluklari saydigimizda sondaki
       *     bosluklarin sayisi ismimizin icindeki tum bosluk sayisina
       *     esitse ismimiz daha once UPDATE edilmistir. Sondaki bosluk
       *     sayisi ismimizin icindeki tum bosluk sayisina esit degilse
       *     o zaman ismimizin karakterleri arasinda hala bosluk vardir.
-      *     Burada bunu yapiyorum. Fakat bu durumda '_________MEHMET' 
+      *     Burada bunu yapiyorum. Fakat bu durumda '_________MEHMET'
       *     gibi ismi sona yazdigimizda da bosluk sayilari esitlenir.
-      *     Bu yuzden IF kontrolumuzun yanında ilk karakterin bosluk
+      *     Bu yuzden IF kontrolumuzun yaninda ilk karakterin bosluk
       *     olup olmadigini da kontrol ediyoruz.
-            MOVE FUNCTION REVERSE(IDX-ALLNAME(1:15)) TO TEMP-NAME 
+            MOVE FUNCTION REVERSE(IDX-ALLNAME(1:15)) TO TEMP-NAME
             INSPECT TEMP-NAME TALLYING I FOR LEADING SPACES.
             INSPECT TEMP-NAME TALLYING J FOR ALL SPACES.
-            IF I = J AND NOT IDX-ALLNAME(1:1) = SPACE 
+            IF I = J AND NOT IDX-ALLNAME(1:1) = SPACE
               INITIALIZE WS-ERROR-EXPLAIN
-              MOVE IDX-ST TO WS-SUB-RC
-              STRING 'ERROR, ALREADY WAS UPDATED BEFORE.'
+              MOVE 91 TO WS-SUB-RC
+              STRING 'ERROR, ALREADY WAS UPDATED BEFORE!'
               DELIMITED BY SIZE INTO WS-ERROR-EXPLAIN
               PERFORM H999-PROGRAM-EXIT.
        IS-UPDATED-END. EXIT.
       *
        DEL-PROCESS.
            MOVE WS-KEY TO IDX-KEY
-           READ IDX-FILE KEY IS IDX-KEY
-           IF IDX-NOTFND THEN
-              MOVE IDX-ST TO WS-SUB-RC
-              STRING 'ERROR, ALREADY WAS DELETED.'
-              DELIMITED BY SIZE INTO WS-ERROR-EXPLAIN
-              PERFORM H999-PROGRAM-EXIT.
            MOVE IDX-ALLNAME  TO WS-ALLNAME-BEFORE
            DELETE IDX-FILE RECORD
-           IF NOT IDX-SUCCESS THEN
-              INITIALIZE WS-ERROR-EXPLAIN
-              MOVE IDX-ST TO WS-SUB-RC
-              STRING '!ERROR! RECORD EXIST, BUT WAS NOT DELETED.'
-              DELIMITED BY SIZE INTO WS-ERROR-EXPLAIN
-              PERFORM H999-PROGRAM-EXIT.
-           MOVE SPACES TO WS-SUB-DATA.
            PERFORM STATUS-CONTROL.
+           MOVE SPACES TO WS-SUB-DATA.
            PERFORM H999-PROGRAM-EXIT.
        DEL-PROCESS-END. EXIT.
       *
        STATUS-CONTROL.
       * En basta initialize etmemizin sebebi bazi fonksiyonlarda
-      * STATUS-CONTROL'u 2 kez cagiriyorum. İlk cagirista SUCCESSFULL 
+      * STATUS-CONTROL'u 2 kez cagiriyorum. Ilk cagirista SUCCESSFULL
       * olup ikinci cagirista baska bir hata mesaji ile dolum olacaksa
       * karakterlerde sorun olmasin diye en basta sifirliyoruz hep.
            INITIALIZE WS-ERROR-EXPLAIN
@@ -218,27 +199,29 @@
                    MOVE IDX-ST TO WS-SUB-RC
                    STRING 'SUCCESSFULL, RECORD WAS UPDATED.'
                    DELIMITED BY SIZE INTO WS-ERROR-EXPLAIN
-      * YENI EKLENDI
              WHEN IDX-NOTFND AND WS-FUNC-UPDATE
                    MOVE IDX-ST TO WS-SUB-RC
-                   STRING 'ERROR, RECORD NOT FOUND FOR UPDATE.'
+                   STRING 'ERROR, RECORD NOT FOUND FOR UPDATE!'
                    DELIMITED BY SIZE INTO WS-ERROR-EXPLAIN
                    PERFORM H999-PROGRAM-EXIT
-             WHEN IDX-NOTFND
+             WHEN IDX-NOTFND AND WS-FUNC-DELETE
                    MOVE IDX-ST TO WS-SUB-RC
-                   STRING 'ERROR, RECORD WAS NOT READ.'
+                   STRING 'ERROR, RECORD ALREADY WAS DELETED!'
                    DELIMITED BY SIZE INTO WS-ERROR-EXPLAIN
-                   MOVE SPACES TO WS-SUB-DATA
                    PERFORM H999-PROGRAM-EXIT
-             WHEN IDX-DUPLICATE
+             WHEN IDX-NOTFND AND WS-FUNC-READ
                    MOVE IDX-ST TO WS-SUB-RC
-                   STRING 'ERROR, DUPLICATE KEY.'
+                   STRING 'ERROR, RECORD WAS NOT READ!'
+                   DELIMITED BY SIZE INTO WS-ERROR-EXPLAIN
+                   PERFORM H999-PROGRAM-EXIT
+             WHEN IDX-DUPLICATE AND WS-FUNC-WRITE
+                   MOVE IDX-ST TO WS-SUB-RC
+                   STRING 'ERROR, DUPLICATE KEY!'
                    DELIMITED BY SIZE INTO WS-ERROR-EXPLAIN
                    PERFORM H999-PROGRAM-EXIT
              WHEN OTHER
                    MOVE IDX-ST TO WS-SUB-RC
-                   STRING 'ERROR, ANOTHER PROBLEM.'
-                   'MAY REWRITE PROBLEM'
+                   STRING 'ERROR, UNKNOWN PROBLEM!'
                    DELIMITED BY SIZE INTO WS-ERROR-EXPLAIN
                    PERFORM H999-PROGRAM-EXIT
            END-EVALUATE.
