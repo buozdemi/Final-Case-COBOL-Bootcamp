@@ -1,13 +1,14 @@
 # **# Final-Case-COBOL-Bootcamp**
-` `Patika.dev &amp; Akbank is a draft version of the work I developed at the end of COBOL Bootcamp.
+Patika.dev &amp; Akbank is a draft version of the work I developed at the end of COBOL Bootcamp.
 
 ## **Proje Tanıtım**
-**ANA PROGRAM           = 'REALIDX.CBL'**
+**ANA PROGRAM = 'REALIDX.CBL'**
 
-**ALT PROGRAM           = 'SUBPROGR.CBL'**
+**ALT PROGRAM = 'SUBPROGR.CBL'**
 
 **ANA PROGRAM DERLEYİCİ = 'JREALIDX.JCL'**
 
+---
 Öncelikle bu projenin çalıştırılabilmesi için sırasıyla aşağıdaki adımlara uymamız gerek:
 
 1) **'ZCREATIN.JCL'** dosyamızı submit ederek **'QSAM.INPUT'** isimli dosyayı oluşturmamız gerekiyor.
@@ -21,6 +22,8 @@ Bu iki JCL'in içine bakarsanız oluşan **QSAM.INPUT** ve **QSAM.BB** dosyalar�
 Şimdi bakarsak elimizde bir **'VSAM.AA'**, bir de **'QSAM.INPUT'** isminde iki dosyamız var.
 Artık projemizi çalıştırabiliriz, fakat çalıştırmadan önce amacımıza bakalım.
 
+---
+
 ### **Projedeki Amaç :**
 **QSAM.INPUT** dosyamızdaki satiri okuyup alt programımıza göndermemiz ile birlikte alt programımız bu satirin içinde yer alan ilk harfe göre **'VSAM.AA'** dosyamıza hangi işlemin(fonksiyonun) uygulanacağına karar vererek o işlemi uygulayacak.
 
@@ -29,27 +32,21 @@ Artık projemizi çalıştırabiliriz, fakat çalıştırmadan önce amacımıza
 Değişkenler artık dolu olduğuna göre alt program ana programa döndüğünde değişen bu değişkenlerimizi OUTPUT olarak açtığımız yeni dosyamıza yazdıracağız. Sonuç olarak OUTPUT dosyamızda işlemlerin başarılı olup olmadığı, başarılı olduysa eski halinin nasıl gözüktüğü ve yeni halinin nasıl gözüktüğü gibi bilgileri yazdıracağız. 
 Diğer işlemlerden farklı olarak eğer (R)READ işlemi yaptıysak o zaman VSAM dosyamızdan okuduğumuz bu satırın icerigini İsim Soyisim, Dogum Tarihi(Gregorian olarak), Bütçe(Dolar olarak) şeklinde yazdıracağız.
 
-## **Proje İçi Detaylı Not**
-#### **DELDEF01.JCL
+## Proje İçi Detaylı Not
+#### DELDEF01.JCL
 <p align="left">
-  <img width="300" height="300" src="https://github.com/buozdemi/kodluyoruzilkrepo/blob/main/img/Comment%20Photos/deldef01-1.png?raw=true">
-</p>
-<p align="right">
-  <img width="300" height="300" src="https://github.com/buozdemi/kodluyoruzilkrepo/blob/main/img/Comment%20Photos/deldef01-2.png?raw=true">
+  <img width="480" height="370" src="https://github.com/buozdemi/kodluyoruzilkrepo/blob/main/img/Comment%20Photos/deldef01-1.png?raw=true">
+  <img width="510" height="370" src="https://github.com/buozdemi/kodluyoruzilkrepo/blob/main/img/Comment%20Photos/deldef01-2.png?raw=true">
 </p>
 
-#### **JREALIDX.JCL
+#### JREALIDX.JCL
 <p align="left">
-  <img width="300" height="300" src="https://github.com/buozdemi/kodluyoruzilkrepo/blob/main/img/Comment%20Photos/jrealidx-1.png?raw=true">
-</p>
-<p align="right">
-  <img width="300" height="300" src="https://github.com/buozdemi/kodluyoruzilkrepo/blob/main/img/Comment%20Photos/jrealidx-2.png?raw=true">
+  <img width="480" height="480" src="https://github.com/buozdemi/kodluyoruzilkrepo/blob/main/img/Comment%20Photos/jrealidx-1.png?raw=true">
+  <img width="480" height="480" src="https://github.com/buozdemi/kodluyoruzilkrepo/blob/main/img/Comment%20Photos/jrealidx-2.png?raw=true">
 </p>
 
-#### **Z2PREVSA.JCL
+#### Z2PREVSA.JCL
 <p align="left">
-  <img width="300" height="300" src="https://github.com/buozdemi/kodluyoruzilkrepo/blob/main/img/Comment%20Photos/z2prevsa1.png?raw=true">
-</p>
-<p align="left">
-  <img width="300" height="300" src="https://github.com/buozdemi/kodluyoruzilkrepo/blob/main/img/Comment%20Photos/z2prevsa2.png?raw=true">
+  <img width="480" height="480" src="https://github.com/buozdemi/kodluyoruzilkrepo/blob/main/img/Comment%20Photos/z2prevsa1.png?raw=true">
+  <img width="480" height="480" src="https://github.com/buozdemi/kodluyoruzilkrepo/blob/main/img/Comment%20Photos/z2prevsa2.png?raw=true">
 </p>
