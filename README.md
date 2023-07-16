@@ -3,7 +3,7 @@ Patika.dev &amp; Akbank is a draft version of the work I developed at the end of
 
 ---
 
-### Teşekkür
+### Teşekkürler
 
 Bu bootcamp'i sağlayan tüm AKBANK ve PATIKA.DEV ailesine, [MEHMET AYDIN](https://www.linkedin.com/in/mehmet-aydin-57088a16/) hocamıza, müthiş desteklerinden dolayı [YUNUS TEYMUR](https://www.linkedin.com/in/yunusteymur/)'a çok teşekkürler.
 
