@@ -1,7 +1,5 @@
-# **# Final-Case-COBOL-Bootcamp**
-Patika.dev &amp; Akbank is a draft version of the work I developed at the end of COBOL Bootcamp.
-
----
+# **Final-Case-COBOL-Bootcamp**
+↳ Patika.dev & Akbank işbirliği ile gerçekleştirilen COBOL Bootcamp'i sonunda geliştirmiş olduğum projenin son versiyonudur.
 
 ### Teşekkürler
 
@@ -10,24 +8,27 @@ Bu bootcamp'i sağlayan tüm AKBANK ve PATIKA.DEV ailesine, [MEHMET AYDIN](https
 ---
 
 ## **Proje Tanıtım**
+
 **ANA PROGRAM = 'REALIDX.CBL'**
 
 **ALT PROGRAM = 'SUBPROGR.CBL'**
 
 **ANA PROGRAM DERLEYİCİ = 'JREALIDX.JCL'**
 
----
-
 NOT1 : JREALIDX.JCL programının derleme işlemi 30-35 saniye sürmektedir.
 
 NOT2 : Projeyi her çalıştırışınızda mutlaka önce DELDEF01.JCL'ini çalıştırınız. Çünkü proje çalıştığında VSAM dosyasındaki veriler değiştirildiği için verileri eski haline getirmeden ikinci kez SUBMIT JOB yaparsanız, veriler 2. kez değiştirilmeye çalışılacak ve farklı sonuçlar görmenize neden olacaktır.
+
+---
 
 Öncelikle bu projenin çalıştırılabilmesi için sırasıyla aşağıdaki adımlara uymamız gerek:
 
 1) **'ZCREATIN.JCL'** dosyamızı submit ederek **'QSAM.INPUT'** isimli dosyayı oluşturmamız gerekiyor.
 1) **'Z2PREVSA.JCL'** dosyamızı submit ederek **'QSAM.BB'** isimli dosyayı oluşturmamız gerek.
 
-Bu iki JCL'in içine bakarsanız oluşan **QSAM.INPUT** ve **QSAM.BB** dosyalarımızın datalarını 'SORTIN   DD \*' bölümünde göreceksiniz. Bu kısımdaki veriler oluşturduğumuz iki dosyanın içindeki verilerdir. Fakat QSAM.BB dosyasını sadece bir araç olarak oluşturduk. Çünkü bu **QSAM.BB** dosyasının verilerini okuyarak şimdi de bir **VSAM.AA** dosyası oluşturacağız. Bu **VSAM.AA** dosyası **QSAM.BB** dosyamızdaki aynı verilere sahip olmuş olacak. Bu adımda da VSAM dosyamızı oluşturalım.
+Bu iki JCL'in içine bakarsanız oluşan **QSAM.INPUT** ve **QSAM.BB** dosyalarımızın datalarını 'SORTIN   DD \*' bölümünde göreceksiniz. Bu kısımdaki veriler oluşturduğumuz iki dosyanın içindeki verilerdir. Fakat QSAM.BB dosyasını sadece bir araç olarak oluşturduk. Çünkü bu **QSAM.BB** dosyasının verilerini okuyarak şimdi de bir **VSAM.AA** dosyası oluşturacağız. Bu **VSAM.AA** dosyası **QSAM.BB** dosyamızdaki aynı verilere sahip olmuş olacak. 
+
+Bu adımda da VSAM dosyamızı oluşturalım:
 
 3) **'DELDEF01.JCL'** dosyamızı submit ederek **'VSAM.AA'** isimli dosyayı oluşturuyoruz.
 
