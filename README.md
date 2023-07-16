@@ -26,10 +26,13 @@ Artık projemizi çalıştırabiliriz, fakat çalıştırmadan önce amacımıza
 
 Değişkenler artık dolu olduğuna göre alt program ana programa döndüğünde değişen bu değişkenlerimizi OUTPUT olarak açtığımız yeni dosyamıza yazdıracağız. Sonuç olarak OUTPUT dosyamızda işlemlerin başarılı olup olmadığı, başarılı olduysa eski halinin nasıl gözüktüğü ve yeni halinin nasıl gözüktüğü gibi bilgileri yazdıracağız. 
 Diğer işlemlerden farklı olarak eğer (R)READ işlemi yaptıysak o zaman VSAM dosyamızdan okuduğumuz bu satırın icerigini İsim Soyisim, Dogum Tarihi(Gregorian olarak), Bütçe(Dolar olarak) şeklinde yazdıracağız.
----
+
 ## **Proje İçi Detaylı Not**
 #### **DELDEF01.JCL
-![alt text](https://github.com/buozdemi/kodluyoruzilkrepo/blob/main/img/Comment%20Photos/deldef01-1.png?raw=true)
+<p align="center">
+  <img width="150" height="150" src="https://github.com/buozdemi/kodluyoruzilkrepo/blob/main/img/Comment%20Photos/deldef01-1.png?raw=true">
+</p>
+
 ![alt text](https://github.com/buozdemi/kodluyoruzilkrepo/blob/main/img/Comment%20Photos/deldef01-2.png?raw=true)
 #### **JREALIDX.JCL
 ![alt text](https://github.com/buozdemi/kodluyoruzilkrepo/blob/main/img/Comment%20Photos/jrealidx-1.png?raw=true)
