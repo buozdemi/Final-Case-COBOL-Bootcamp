@@ -50,3 +50,7 @@ Diğer işlemlerden farklı olarak eğer (R)READ işlemi yaptıysak o zaman VSA
   <img width="480" height="480" src="https://github.com/buozdemi/kodluyoruzilkrepo/blob/main/img/Comment%20Photos/z2prevsa1.png?raw=true">
   <img width="480" height="480" src="https://github.com/buozdemi/kodluyoruzilkrepo/blob/main/img/Comment%20Photos/z2prevsa2.png?raw=true">
 </p>
+
+NOT : Projeyi her çalıştırışınızda mutlaka önce DELDEF01.JCL'ini çalıştırınız. Çünkü proje çalıştığında VSAM dosyasındaki veriler değiştirildiği için verileri eski haline getirmeden ikinci kez SUBMIT JOB yaparsanız, veriler 2. kez değiştirilmeye çalışılacak ve farklı sonuçlar görmenize neden olacaktır.
+
+Bu bootcamp'i sağlayan tüm AKBANK ve PATIKA.DEV ailesine, [MEHMET AYDIN](https://www.linkedin.com/in/mehmet-aydin-57088a16/) hocamıza, müthiş desteklerinden dolayı [YUNUS TEYMUR](https://www.linkedin.com/in/yunusteymur/)'a çok teşekkürler.
