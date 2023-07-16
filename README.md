@@ -3,7 +3,9 @@
 
 ## **Proje Tanıtım**
 **ANA PROGRAM           = 'REALIDX.CBL'**
+
 **ALT PROGRAM           = 'SUBPROGR.CBL'**
+
 **ANA PROGRAM DERLEYİCİ = 'JREALIDX.JCL'**
 
 Öncelikle bu projenin çalıştırılabilmesi için sırasıyla aşağıdaki adımlara uymamız gerek:
@@ -29,14 +31,25 @@ Diğer işlemlerden farklı olarak eğer (R)READ işlemi yaptıysak o zaman VSA
 
 ## **Proje İçi Detaylı Not**
 #### **DELDEF01.JCL
-<p align="center">
-  <img width="150" height="150" src="https://github.com/buozdemi/kodluyoruzilkrepo/blob/main/img/Comment%20Photos/deldef01-1.png?raw=true">
+<p align="left">
+  <img width="300" height="300" src="https://github.com/buozdemi/kodluyoruzilkrepo/blob/main/img/Comment%20Photos/deldef01-1.png?raw=true">
+</p>
+<p align="right">
+  <img width="300" height="300" src="https://github.com/buozdemi/kodluyoruzilkrepo/blob/main/img/Comment%20Photos/deldef01-2.png?raw=true">
 </p>
 
-![alt text](https://github.com/buozdemi/kodluyoruzilkrepo/blob/main/img/Comment%20Photos/deldef01-2.png?raw=true)
 #### **JREALIDX.JCL
-![alt text](https://github.com/buozdemi/kodluyoruzilkrepo/blob/main/img/Comment%20Photos/jrealidx-1.png?raw=true)
-![alt text](https://github.com/buozdemi/kodluyoruzilkrepo/blob/main/img/Comment%20Photos/jrealidx-2.png?raw=true)
+<p align="left">
+  <img width="300" height="300" src="https://github.com/buozdemi/kodluyoruzilkrepo/blob/main/img/Comment%20Photos/jrealidx-1.png?raw=true">
+</p>
+<p align="right">
+  <img width="300" height="300" src="https://github.com/buozdemi/kodluyoruzilkrepo/blob/main/img/Comment%20Photos/jrealidx-2.png?raw=true">
+</p>
+
 #### **Z2PREVSA.JCL
-![alt text](https://github.com/buozdemi/kodluyoruzilkrepo/blob/main/img/Comment%20Photos/z2prevsa1.png?raw=true)
-![alt text](https://github.com/buozdemi/kodluyoruzilkrepo/blob/main/img/Comment%20Photos/z2prevsa2.png?raw=true)
+<p align="left">
+  <img width="300" height="300" src="https://github.com/buozdemi/kodluyoruzilkrepo/blob/main/img/Comment%20Photos/z2prevsa1.png?raw=true">
+</p>
+<p align="left">
+  <img width="300" height="300" src="https://github.com/buozdemi/kodluyoruzilkrepo/blob/main/img/Comment%20Photos/z2prevsa2.png?raw=true">
+</p>
