@@ -243,8 +243,8 @@
       *
         GREGORIAN-DATE.
       * JCL'de GREGORIAN olan kullanici dogum tarihlerini JULIAN tarihe
-      * cevirmistik. OUTPUT dosyamiza bu tarihi GREGORIAN olarak 
-      * yazdirmak istedigimiz icin burada donusum islemi 
+      * cevirmistik. OUTPUT dosyamiza bu tarihi GREGORIAN olarak
+      * yazdirmak istedigimiz icin burada donusum islemi
       * gerceklestirdik.
             INITIALIZE TMP-DATE TMP-INT-JULIAN TMP-GREG
             MOVE WS-DATE TO TMP-DATE

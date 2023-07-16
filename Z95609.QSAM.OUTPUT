@@ -2,7 +2,7 @@ Note : If EVENT is  READ(R), use the parenthesis section.
                                                               |    (NAME)     |   (SURNAME)   |  (BIRTH DATE) |               |      (BUDGET)      |
  ID  |DVZ|EVENT |RC|                  MESSAGE                 |  BEFORE NAME  |  AFTER NAME   | BEFORE L.NAME | AFTER L.NAME  |                    |
 ----- --- ------ -- ------------------------------------------ --------------- --------------- --------------- --------------- --------------------
-10001-571-WRITE -00-SUCCESSFULL, RECORD WAS ADDED.            -               -U N N A M E D  -               -UNSURNAMED
+10001-571-READ  -23-ERROR, RECORD WAS NOT READ!
 10002-840-UPDATE-00-SUCCESSFULL, RECORD WAS UPDATED.          -RO B  E R     T-ROBERT         -DE NIRO        -DI NIRO
 10002-840-READ  -00-SUCCESSFULL, RECORD WAS READ.             -ROBERT         -DI NIRO        -19430817       -                                $0.00
 10005-911-DELETE-23-ERROR, RECORD ALREADY WAS DELETED!
@@ -26,3 +26,6 @@ Note : If EVENT is  READ(R), use the parenthesis section.
 10032-412-UPDATE-23-ERROR, RECORD NOT FOUND FOR UPDATE!
 10007-433-UPDATE-91-ERROR, ALREADY WAS UPDATED BEFORE!
 10009-840-UPDATE-00-SUCCESSFULL, RECORD WAS UPDATED.          -LI ON  E      L-LIONEL         -MESSI          -MISSI
+10008-949-DELETE-00-SUCCESSFULL, RECORD WAS DELETED.          -MEHMET         -               -EYDIN          -
+10008-949-READ  -23-ERROR, RECORD WAS NOT READ!
+10008-949-WRITE -00-SUCCESSFULL, RECORD WAS ADDED.            -               -U N N A M E D  -               -UNSURNAMED

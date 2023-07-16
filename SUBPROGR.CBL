@@ -169,7 +169,17 @@
       *
        DEL-PROCESS.
            MOVE WS-KEY TO IDX-KEY
-           MOVE IDX-ALLNAME  TO WS-ALLNAME-BEFORE
+      * Burada sadece WS-ALLNAME-BEFORE'u doldurmak icin READ yaptik.
+           READ IDX-FILE KEY IS IDX-KEY
+           EVALUATE IDX-ST 
+             WHEN 0 
+               MOVE IDX-ALLNAME  TO WS-ALLNAME-BEFORE
+             WHEN 23 
+      * Eger kaydimiz yok ise STATUS-CONTROL kisminde kayit yok kismina 
+      * girip yanlis bir ACIKLAMA yazilmasin diye burada IDX-ST'Yİ
+      * tekrar FALSE haline getirdik. 
+               SET IDX-SUCCESS TO TRUE
+           END-EVALUATE
            DELETE IDX-FILE RECORD
            PERFORM STATUS-CONTROL.
            MOVE SPACES TO WS-SUB-DATA.
@@ -181,9 +191,6 @@
       * STATUS-CONTROL'u 2 kez cagiriyorum. Ilk cagirista SUCCESSFULL
       * olup ikinci cagirista baska bir hata mesaji ile dolum olacaksa
       * karakterlerde sorun olmasin diye en basta sifirliyoruz hep.
-      * Burada islemlerimizin aciklamalarini okunabilirlik acisindan 
-      * tek bir fonksiyonda dolduruyoruz, hata durumlarinda da cikisi
-      * buradan sagliyoruz.
            INITIALIZE WS-ERROR-EXPLAIN
            EVALUATE TRUE
              WHEN IDX-SUCCESS AND WS-FUNC-READ
