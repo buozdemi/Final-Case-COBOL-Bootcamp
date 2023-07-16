@@ -1,0 +1,28 @@
+Note : If EVENT is  READ(R), use the parenthesis section.
+                                                              |    (NAME)     |   (SURNAME)   |  (BIRTH DATE) |               |      (BUDGET)      |
+ ID  |DVZ|EVENT |RC|                  MESSAGE                 |  BEFORE NAME  |  AFTER NAME   | BEFORE L.NAME | AFTER L.NAME  |                    |
+----- --- ------ -- ------------------------------------------ --------------- --------------- --------------- --------------- --------------------
+10001-571-WRITE -00-SUCCESSFULL, RECORD WAS ADDED.            -               -U N N A M E D  -               -UNSURNAMED
+10002-840-UPDATE-00-SUCCESSFULL, RECORD WAS UPDATED.          -RO B  E R     T-ROBERT         -DE NIRO        -DI NIRO
+10002-840-READ  -00-SUCCESSFULL, RECORD WAS READ.             -ROBERT         -DI NIRO        -19430817       -                                $0.00
+10005-911-DELETE-23-ERROR, RECORD ALREADY WAS DELETED!
+10003-911-WRITE -00-SUCCESSFULL, RECORD WAS ADDED.            -               -U N N A M E D  -               -UNSURNAMED
+10009-840-READ  -00-SUCCESSFULL, RECORD WAS READ.             -LI ON  E      L-MESSI          -19870624       -                                $0.00
+10007-433-WRITE -00-SUCCESSFULL, RECORD WAS ADDED.            -               -U N N A M E D  -               -UNSURNAMED
+10002-840-WRITE -22-ERROR, DUPLICATE KEY!
+10007-433-DELETE-00-SUCCESSFULL, RECORD WAS DELETED.          -U N N A M E D  -               -UNSURNAMED     -
+10003-911-READ  -00-SUCCESSFULL, RECORD WAS READ.             -U N N A M E D  -UNSURNAMED     -19010101       -                             $1000.00
+10007-433-DELETE-23-ERROR, RECORD ALREADY WAS DELETED!
+10007-433-WRITE -00-SUCCESSFULL, RECORD WAS ADDED.            -               -U N N A M E D  -               -UNSURNAMED
+10007-433-READ  -00-SUCCESSFULL, RECORD WAS READ.             -U N N A M E D  -UNSURNAMED     -19010101       -                             $1000.00
+10007-433-UPDATE-00-SUCCESSFULL, RECORD WAS UPDATED.          -U N N A M E D  -UNNAMED        -UNSURNAMED     -UNSURNEMID
+10006-978-READ  -00-SUCCESSFULL, RECORD WAS READ.             -M IC  HA E    L-JORDAN         -19630217       -                                $0.00
+10006-978-UPDATE-00-SUCCESSFULL, RECORD WAS UPDATED.          -M IC  HA E    L-MICHAEL        -JORDAN         -JORDEN
+10006-978-READ  -00-SUCCESSFULL, RECORD WAS READ.             -MICHAEL        -JORDEN         -19630217       -                                $0.00
+10008-949-READ  -00-SUCCESSFULL, RECORD WAS READ.             -M EH M  E     T-AYDIN          -19740918       -                                $0.00
+10008-949-UPDATE-00-SUCCESSFULL, RECORD WAS UPDATED.          -M EH M  E     T-MEHMET         -AYDIN          -EYDIN
+10008-949-READ  -00-SUCCESSFULL, RECORD WAS READ.             -MEHMET         -EYDIN          -19740918       -                                $0.00
+10011-501-EMPTY -91-ERROR: FROM INPUT, UNDEFINED LETTER: C
+10032-412-UPDATE-23-ERROR, RECORD NOT FOUND FOR UPDATE!
+10007-433-UPDATE-91-ERROR, ALREADY WAS UPDATED BEFORE!
+10009-840-UPDATE-00-SUCCESSFULL, RECORD WAS UPDATED.          -LI ON  E      L-LIONEL         -MESSI          -MISSI

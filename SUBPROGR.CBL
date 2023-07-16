@@ -62,7 +62,7 @@
              WHEN WS-FUNC-DELETE
                 PERFORM DEL-PROCESS
              WHEN OTHER
-               MOVE 91 TO WS-SUB-RC 
+               MOVE 91 TO WS-SUB-RC
                STRING 'ERROR: FROM INPUT, UNDEFINED LETTER: '
                WS-SUB-FUNC
                DELIMITED BY SIZE INTO WS-ERROR-EXPLAIN
@@ -181,6 +181,9 @@
       * STATUS-CONTROL'u 2 kez cagiriyorum. Ilk cagirista SUCCESSFULL
       * olup ikinci cagirista baska bir hata mesaji ile dolum olacaksa
       * karakterlerde sorun olmasin diye en basta sifirliyoruz hep.
+      * Burada islemlerimizin aciklamalarini okunabilirlik acisindan 
+      * tek bir fonksiyonda dolduruyoruz, hata durumlarinda da cikisi
+      * buradan sagliyoruz.
            INITIALIZE WS-ERROR-EXPLAIN
            EVALUATE TRUE
              WHEN IDX-SUCCESS AND WS-FUNC-READ

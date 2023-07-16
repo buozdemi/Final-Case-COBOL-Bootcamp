@@ -1,5 +1,5 @@
-         IDENTIFICATION DIVISION.
-        PROGRAM-ID.    PBEGIDX.
+        IDENTIFICATION DIVISION.
+        PROGRAM-ID.    REALIDX.
         AUTHOR.        BURAK OZDEMIR.
         ENVIRONMENT DIVISION.
         INPUT-OUTPUT SECTION.
@@ -164,7 +164,7 @@
       * Buradaki ilk WHEN ifadesi IDX-FILE acilamazsa sadece
       * hata aciklamasi yazilsin diye var. Aksi takdirde ID,DVZ,WRITE
       * gibi degerler de yaziliyor. Ayrica programi durduruyoruz.
-              WHEN (NOT WS-SUB-RC = 0 AND NOT WS-SUB-RC = 91) 
+              WHEN (NOT WS-SUB-RC = 0 AND NOT WS-SUB-RC = 91)
                    AND NOT WS-FUNC-READ AND
                    NOT WS-FUNC-DELETE AND NOT WS-FUNC-UPDATE AND
                    NOT WS-FUNC-WRITE
@@ -242,6 +242,10 @@
         H290-FILL-AS-READ-END. EXIT.
       *
         GREGORIAN-DATE.
+      * JCL'de GREGORIAN olan kullanici dogum tarihlerini JULIAN tarihe
+      * cevirmistik. OUTPUT dosyamiza bu tarihi GREGORIAN olarak 
+      * yazdirmak istedigimiz icin burada donusum islemi 
+      * gerceklestirdik.
             INITIALIZE TMP-DATE TMP-INT-JULIAN TMP-GREG
             MOVE WS-DATE TO TMP-DATE
             COMPUTE TMP-INT-JULIAN = FUNCTION INTEGER-OF-DAY(TMP-DATE)
